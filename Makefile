@@ -48,8 +48,9 @@ root: $(CPYTHONLIB)
 	cp -a $(CPYTHONLIB)/ root/lib
 	( \
 		cd root/lib/python$(PYMINOR); \
-		rm -fr test distutils ensurepip idlelib __pycache__ tkinter; \
+		rm -fr distutils ensurepip idlelib __pycache__ tkinter; \
 	)
+
 
 $(CPYTHONLIB):
 	make -C $(CPYTHONROOT)
