@@ -31,7 +31,8 @@ LDFLAGS=\
 	-s USE_FREETYPE=1 \
 	-std=c++14 \
   -lstdc++ \
-  --memory-init-file 0
+  --memory-init-file 0 \
+  --minify 0
 
 NUMPY_ROOT=numpy/build/numpy
 NUMPY_LIBS=\
@@ -97,7 +98,7 @@ build/pyodide.asm.js: src/main.bc src/jsimport.bc src/jsproxy.bc src/js2python.b
 
 
 build/pyodide.asm.data: root/.built
-	python2 $(FILEPACKAGER) build/pyodide.asm.data --preload root/lib@lib --js-output=build/pyodide.asm.data.js
+	python2 $(FILEPACKAGER) build/pyodide.asm.data --preload root/lib@lib --js-output=build/pyodide.asm.data.js --use-preload-plugins
 
 build/pyodide_dev.js: src/pyodide.js
 	cp $< $@
@@ -155,23 +156,23 @@ clean:
 
 # TODO: It would be nice to generalize this
 build/numpy.data: $(NUMPY_LIBS)
-	python2 $(FILEPACKAGER) build/numpy.data --preload $(NUMPY_ROOT)@/lib/python3.6/site-packages/numpy --js-output=build/numpy.js --export-name=pyodide --exclude \*.wasm.pre --exclude __pycache__
+	python2 $(FILEPACKAGER) build/numpy.data --preload $(NUMPY_ROOT)@/lib/python3.6/site-packages/numpy --js-output=build/numpy.js --export-name=pyodide --exclude \*.wasm.pre --exclude __pycache__ --use-preload-plugins
 
 
 build/dateutil.data: $(DATEUTIL_LIBS)
-	python2 $(FILEPACKAGER) build/dateutil.data --preload $(DATEUTIL_ROOT)@/lib/python3.6/site-packages/dateutil --js-output=build/dateutil.js --export-name=pyodide --exclude \*.wasm.pre --exclude __pycache__
+	python2 $(FILEPACKAGER) build/dateutil.data --preload $(DATEUTIL_ROOT)@/lib/python3.6/site-packages/dateutil --js-output=build/dateutil.js --export-name=pyodide --exclude \*.wasm.pre --exclude __pycache__ --use-preload-plugins
 
 
 build/pytz.data: $(PYTZ_LIBS)
-	python2 $(FILEPACKAGER) build/pytz.data --preload $(PYTZ_ROOT)@/lib/python3.6/site-packages/pytz --js-output=build/pytz.js --export-name=pyodide --exclude \*.wasm.pre --exclude __pycache__
+	python2 $(FILEPACKAGER) build/pytz.data --preload $(PYTZ_ROOT)@/lib/python3.6/site-packages/pytz --js-output=build/pytz.js --export-name=pyodide --exclude \*.wasm.pre --exclude __pycache__ --use-preload-plugins
 
 
 build/pandas.data: $(PANDAS_LIBS)
-	python2 $(FILEPACKAGER) build/pandas.data --preload $(PANDAS_ROOT)@/lib/python3.6/site-packages/pandas --js-output=build/pandas.js --export-name=pyodide --exclude \*.wasm.pre --exclude __pycache__
+	python2 $(FILEPACKAGER) build/pandas.data --preload $(PANDAS_ROOT)@/lib/python3.6/site-packages/pandas --js-output=build/pandas.js --export-name=pyodide --exclude \*.wasm.pre --exclude __pycache__ --use-preload-plugins
 
 
 build/matplotlib.data: $(MATPLOTLIB_LIBS)
-	python2 $(FILEPACKAGER) build/matplotlib.data --preload $(MATPLOTLIB_ROOT)@/lib/python3.6/site-packages/matplotlib --js-output=build/matplotlib.js --export-name=pyodide --exclude \*.wasm.pre --exclude __pycache__
+	python2 $(FILEPACKAGER) build/matplotlib.data --preload $(MATPLOTLIB_ROOT)@/lib/python3.6/site-packages/matplotlib --js-output=build/matplotlib.js --export-name=pyodide --exclude \*.wasm.pre --exclude __pycache__ --use-preload-plugins
 
 
 root/.built: \
