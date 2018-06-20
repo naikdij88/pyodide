@@ -74,7 +74,7 @@ all: build/pyodide.asm.js \
 	build/pyodide.asm.data \
 	build/pyodide.js \
 	build/pyodide_dev.js \
-	build/python.html \
+#	build/python.html \
 	build/matplotlib.html \
 	build/matplotlib-sideload.html \
 	build/renderedhtml.css \
@@ -188,16 +188,16 @@ root/.built: \
 	rm -rf root
 	mkdir -p root/lib
 	cp -a $(CPYTHONLIB)/ root/lib
-	cp $(SIX_LIBS) $(SITEPACKAGES)
-	cp $(PYPARSING_LIBS) $(SITEPACKAGES)
-	cp $(CYCLER_LIBS) $(SITEPACKAGES)
-	cp $(KIWISOLVER_LIBS) $(SITEPACKAGES)
+	#cp $(SIX_LIBS) $(SITEPACKAGES)
+	#cp $(PYPARSING_LIBS) $(SITEPACKAGES)
+	#cp $(CYCLER_LIBS) $(SITEPACKAGES)
+	#cp $(KIWISOLVER_LIBS) $(SITEPACKAGES)
 	cp src/sitecustomize.py $(SITEPACKAGES)
-	cp src/webbrowser.py root/lib/python$(PYMINOR)
-	cp src/_testcapi.py	root/lib/python$(PYMINOR)
-	cp src/pystone.py root/lib/python$(PYMINOR)
+	#cp src/webbrowser.py root/lib/python$(PYMINOR)
+	#cp src/_testcapi.py	root/lib/python$(PYMINOR)
+	#cp src/pystone.py root/lib/python$(PYMINOR)
 	cp src/pyodide.py root/lib/python$(PYMINOR)/site-packages
-	cp src/wasm_backend.py root/lib/python$(PYMINOR)/site-packages
+	#cp src/wasm_backend.py root/lib/python$(PYMINOR)/site-packages
 	( \
 		cd root/lib/python$(PYMINOR); \
 		rm -fr `cat ../../../remove_modules.txt`; \
