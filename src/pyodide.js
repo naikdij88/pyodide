@@ -103,46 +103,5 @@ var languagePluginLoader = new Promise((resolve, reject) => {
 
     document.head.appendChild(data_script);
 
-    ////////////////////////////////////////////////////////////
-    // Iodide-specific functionality, that doesn't make sense
-    // if not using with Iodide.
-    if (window.iodide !== undefined) {
-        // Load the custom CSS for Pyodide
-        let link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = `${baseURL}renderedhtml.css`;
-        document.getElementsByTagName('head')[0].appendChild(link);
-
-        // Add a custom output handler for Python objects
-        window.iodide.addOutputHandler({
-            shouldHandle: (val) => {
-                return (typeof val === 'function' &&
-                        pyodide.PyProxy.isPyProxy(val));
-            },
-
-            render: (val) => {
-                let div = document.createElement('div');
-                div.className = 'rendered_html';
-                var element;
-                if (val._repr_html_ !== undefined) {
-                    let result = val._repr_html_();
-                    if (typeof result === 'string') {
-                        div.appendChild(new DOMParser().parseFromString(
-                            result, 'text/html').body.firstChild);
-                        element = div;
-                    } else {
-                        element = result;
-                    }
-                } else {
-                    let pre = document.createElement('pre');
-                    pre.textContent = val.toString();
-                    div.appendChild(pre);
-                    element = div;
-                }
-                return element;
-            }
-        });
-    }
 });
 languagePluginLoader
