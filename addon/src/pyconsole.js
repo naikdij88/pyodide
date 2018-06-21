@@ -2,6 +2,8 @@
 
 let firstRun = true;
 let tmpLog = [];
+let inputHistory = [];
+let historyCount = 0;
 let scrollCount = 0;
 let pyinput = document.getElementById('pyinput');
 
@@ -66,13 +68,43 @@ function submit() {
     scrollCount = scrollCount + result.getBoundingClientRect().height;
     output.scrollTop = scrollCount;
 
-    // Finally clear input so we can go again
+    // Finally save and clear input so we can go again
+    inputHistory.push(input);
+    historyCount = 0;
     pyinput.value = '';
 };
+
+
+function arrowUp() {
+    if ((historyCount <= 0) & (historyCount > inputHistory.length * -1)) {
+        historyCount = historyCount - 1;
+        pyinput.value = inputHistory[inputHistory.length + historyCount];
+    }
+    if (historyCount === 0) {
+        pyinput.value = '';
+    }
+}
+
+
+function arrowDown() {
+    if (historyCount < 0) {
+        historyCount = historyCount + 1;
+        pyinput.value = inputHistory[inputHistory.length + historyCount];
+    }
+    if (historyCount === 0) {
+        pyinput.value = '';
+    }
+}
 
 pyinput.addEventListener('keyup', (event) => {
     if (event.which == 13) {
         firstRun = false;
         submit();
+    }
+    if (event.which == 38) {
+        arrowUp();
+    }
+    if (event.which == 40) {
+        arrowDown();
     }
 });
