@@ -1,9 +1,12 @@
 html, body, .wrapper {
     font-size: 12px;
-    font-family: Cantarell, sans;
     height: 100%;
     width: 100%;
     margin: 0;
+}
+
+html, #pyinput {
+   font-family: “Avant Garde”, Avantgarde, “Century Gothic”, CenturyGothic, “AppleGothic”, sans-serif;
 }
 
 .wrapper {
