@@ -35,7 +35,7 @@ LDFLAGS=\
 
 SITEPACKAGES=root/lib/python$(PYMINOR)/site-packages
 
-all: build/pyodide.asm.js build/pyodide.asm.data build/pyodide.js build/pyodide_dev.js
+all: build/pyodide.asm.js build/pyodide.asm.data build/pyodide.js build/addon
 
 build/pyodide.asm.js: src/main.bc src/jsimport.bc src/jsproxy.bc src/js2python.bc \
 					  src/pyimport.bc src/pyproxy.bc src/python2js.bc \
@@ -50,13 +50,13 @@ build/pyodide.asm.js: src/main.bc src/jsimport.bc src/jsproxy.bc src/js2python.b
 build/pyodide.asm.data: root/.built
 	python2 $(FILEPACKAGER) build/pyodide.asm.data --preload root/lib@lib --js-output=build/pyodide.asm.data.js
 
-build/pyodide_dev.js: src/pyodide.js
-	cp $< $@
-	sed -i -e "s#{{DEPLOY}}##g" $@
-
 build/pyodide.js: src/pyodide.js
 	cp $< $@
-	sed -i -e 's#{{DEPLOY}}#https://iodide.io/pyodide-demo/#g' $@
+	sed -i -e 's#{{DEPLOY}}#pyodide/#g' $@
+
+build/addon:
+	echo 'Copying pyodide files to addon'
+	cp build/* addon/src/pyodide/
 
 clean:
 	rm -fr root
