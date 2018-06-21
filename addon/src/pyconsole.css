@@ -9,8 +9,20 @@ html, body, .wrapper {
     flex-direction: column;
 }
 
-.output {
+#output {
+    font-size: 12px;
     flex: 1 1 auto;
+    overflow-y: scroll;
+}
+
+.result {
+    padding: 0.5em 1em;
+}
+
+.display-input:before {
+    content: '>>>';
+    margin-right: 0.5em;
+    color: gray;
 }
 
 .input {
@@ -24,6 +36,7 @@ html, body, .wrapper {
 #pyinputlabel {
     margin-left: 1em;
     flex: 0 1 auto;
+    color: gray;
 }
 
 #pyinput {
