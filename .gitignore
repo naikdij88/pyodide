@@ -21,5 +21,7 @@ installs
 /cycler/cycler-0.10.0
 /pyparsing/pyparsing-2.2.0
 
+web-ext-artifacts
+
 # Vim
 *.swp
