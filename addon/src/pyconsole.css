@@ -1,4 +1,5 @@
 html, body, .wrapper {
+    font-size: 12px;
     height: 100%;
     width: 100%;
     margin: 0;
@@ -10,7 +11,6 @@ html, body, .wrapper {
 }
 
 #output {
-    font-size: 12px;
     flex: 1 1 auto;
     overflow-y: scroll;
 }
@@ -25,12 +25,21 @@ html, body, .wrapper {
     color: gray;
 }
 
+.display-output {
+    margin: 0.2em 0;
+}
+
 .input {
     width: 100%;
     align-self: flex-end;
     border-top: 1px lightgray solid;
     display: flex;
     align-items: baseline;
+}
+
+.pyversion {
+    float: right;
+    margin: 1em;
 }
 
 #pyinputlabel {
@@ -43,5 +52,5 @@ html, body, .wrapper {
     flex: 1 1 auto; 
     margin: 0;
     border: 0;
-    padding: 1em 1em 1em 0.5em;
+    padding: 0.5em;
 }
