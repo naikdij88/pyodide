@@ -17,6 +17,5 @@ test
 tkinter
 turtle.py
 turtledemo
-unittest
 venv
 wsgiref
