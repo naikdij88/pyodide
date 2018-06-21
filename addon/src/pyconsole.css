@@ -1,5 +1,6 @@
 html, body, .wrapper {
     font-size: 12px;
+    font-family: Cantarell, sans;
     height: 100%;
     width: 100%;
     margin: 0;
@@ -37,6 +38,15 @@ html, body, .wrapper {
     align-items: baseline;
 }
 
+.input.active {
+    border-top: 1px cornflowerblue solid;
+}
+
+.input.active #pyinputlabel {
+    color: cornflowerblue;
+    font-weight: bold;
+}
+
 .pyversion {
     float: right;
     margin: 1em;
@@ -49,6 +59,7 @@ html, body, .wrapper {
 }
 
 #pyinput {
+    font-size: 1em;
     flex: 1 1 auto; 
     margin: 0;
     border: 0;

@@ -6,6 +6,7 @@ let inputHistory = [];
 let historyCount = 0;
 let scrollCount = 0;
 let pyinput = document.getElementById('pyinput');
+let input = document.getElementById('input-wrapper');
 
 // Hijack console so we can print out print commands
 if (typeof console !== "undefined") {
@@ -107,4 +108,12 @@ pyinput.addEventListener('keyup', (event) => {
     if (event.which == 40) {
         arrowDown();
     }
+});
+
+pyinput.addEventListener('focus', (event) => {
+    input.classList.add('active');
+});
+
+pyinput.addEventListener('blur', (event) => {
+    input.classList.remove('active');
 });
