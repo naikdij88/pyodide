@@ -2,7 +2,7 @@
   "description": "Add a python console to the developer tools.",
   "manifest_version": 2,
   "name": "PyConsole",
-  "version": "1.1",
+  "version": "1.2",
   "author": "Sarah Bird",
   "homepage_url": "https://github.com/birdsarah/pyodide/tree/pyconsole",
   "icons": {
