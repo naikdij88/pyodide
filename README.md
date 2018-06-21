@@ -16,3 +16,12 @@ downloads and builds Python.
 * In firefox, go to: about:debugging#addons
 * Pick `manifest.json` from addon directory after selecting "Load Temporary
   Add-on"
+
+##  Assembling web extension
+
+After building CPython, files from `build/` (except `pyodide_dev.js`) are copied to
+`addon/src/pyodide`. `pyodide.js` is then modified so that the baseURL is
+`'pyodide/'` and the packages object is emptied.
+
+Extension can then be built in standard ways:
+https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Package_your_extension_
