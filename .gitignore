@@ -20,3 +20,6 @@ installs
 /six/six-1.11.0
 /cycler/cycler-0.10.0
 /pyparsing/pyparsing-2.2.0
+
+# Vim
+*.swp
