@@ -76,7 +76,11 @@ var languagePluginLoader = new Promise((resolve, reject) => {
     let Module = {};
     window.Module = Module;
 
-    let wasm_promise = WebAssembly.compileStreaming(fetch(wasmURL));
+    // TODO: Revert to code below when https://bugzil.la/1470182 is fixed
+    // let wasm_promise = WebAssembly.compileStreaming(fetch(wasmURL));
+    let wasm_promise = fetch(wasmURL)
+        .then(res => res.arrayBuffer())
+        .then(buf => WebAssembly.compile(buf));
     Module.instantiateWasm = (info, receiveInstance) => {
         wasm_promise
             .then(module => WebAssembly.instantiate(module, info))
