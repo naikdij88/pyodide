@@ -9,10 +9,6 @@
     "128": "icons/pyconsole.png"
   },
   
-  "background": {
-    "scripts": ["src/background.js"]
-  },
-  
   "devtools_page": "src/devtools.html"
 
 }
